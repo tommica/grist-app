@@ -1,0 +1,35 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@inertiajs/inertia": "^0.11.0",
+        "@inertiajs/inertia-svelte": "^0.8.0",
+        "@tsconfig/svelte": "^3.0.0",
+        "@types/node": "^17.0.22",
+        "axios": "^0.25",
+        "date-fns": "^2.28.0",
+        "gridjs": "^5.0.2",
+        "gridjs-svelte": "^2.1.0",
+        "laravel-mix": "^6.0.6",
+        "laravel-mix-svelte": "github:wewowweb/laravel-mix-svelte",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "svelte": "^3.46.4",
+        "svelte-check": "^2.4.6",
+        "svelte-loader": "^3.1.2",
+        "svelte-preprocess": "^4.10.4",
+        "svelte-select": "^4.4.7",
+        "svelty-picker": "^1.2.4",
+        "ts-loader": "^9.2.8",
+        "typescript": "^4.6.2"
+    }
+}

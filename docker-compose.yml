@@ -1,0 +1,13 @@
+# For more information: https://laravel.com/docs/sail
+version: "3"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        image: "gristapp"
+        working_dir: /var/www/html
+        ports:
+            - 8181:8181
+        volumes:
+            - ./:/var/www/html
