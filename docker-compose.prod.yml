@@ -1,0 +1,35 @@
+version: "3"
+services:
+    app:
+        image: "tommica/grist-app:dev"
+        working_dir: /var/www
+        ports:
+            - 8181:80
+        environment:
+            APP_KEY:
+            DB_CONNECTION: mysql
+            DB_HOST: mariadb
+            DB_PORT: 3306
+            DB_DATABASE: grist
+            DB_USERNAME: dbuser
+            DB_PASSWORD: hello
+        volumes:
+            - ./:/var/www/html
+        depends_on:
+            - mariadb
+
+    mariadb:
+        image: mariadb:10.0
+        volumes:
+            - mariadb:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: grist
+            MYSQL_USER: dbuser
+            MYSQL_RANDOM_ROOT_PASSWORD: true 
+            MYSQL_PASSWORD: hello
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+            retries: 3
+            timeout: 5s
+volumes:
+    mariadb:

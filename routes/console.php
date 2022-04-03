@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,7 @@ use App\Models\User;
 Artisan::command('grist:change_root_user_pass', function () {
     $user = User::first();
 
-    if($user->password_changed_at) {
+    if ($user->password_changed_at) {
         $this->comment('Password has already been changed');
         return 0;
     }

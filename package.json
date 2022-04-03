@@ -20,7 +20,7 @@
         "gridjs": "^5.0.2",
         "gridjs-svelte": "^2.1.0",
         "laravel-mix": "^6.0.6",
-        "laravel-mix-svelte": "github:wewowweb/laravel-mix-svelte",
+        "laravel-mix-svelte": "wewowweb/laravel-mix-svelte",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "svelte": "^3.46.4",

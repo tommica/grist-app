@@ -25,10 +25,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $pass = config('app.env') != 'production' ? 'ch4ng3M3' : Str::random();
+
         User::create([
             'name' => 'root',
             'email' => 'root@test.test',
-            'password' => config('app.env') != 'production' ? Hash::make('ch4ng3M3') : Hash::make(Str::random()),
+            'password' => Hash::make($pass),
         ]);
 
         $this->plant1();

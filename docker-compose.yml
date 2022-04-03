@@ -1,13 +1,30 @@
-# For more information: https://laravel.com/docs/sail
 version: "3"
 services:
     app:
         build:
             context: .
             dockerfile: ./docker/Dockerfile
-        image: "gristapp"
-        working_dir: /var/www/html
+        image: "tommica/grist-app:${TAG:-dev}"
+        working_dir: /var/www
         ports:
-            - 8181:8181
+            - 8181:80
         volumes:
-            - ./:/var/www/html
+            - ./:/var/www
+        depends_on:
+            - mariadb
+            
+    mariadb:
+        image: mariadb:10.0
+        volumes:
+            - mariadb:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+            retries: 3
+            timeout: 5s
+volumes:
+    mariadb:
